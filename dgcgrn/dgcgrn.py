@@ -214,11 +214,9 @@ colNumber = []
     criterion = nn.CrossEntropyLoss()
 
 
-    def train(X, y, edge_index, edge_in, in_weight,
-              edge_out, out_weight, query_edges):
+    def train(X, y, edge_index, edge_in, in_weight,edge_out, out_weight, query_edges):
         model.train()
-        out = model(X, edge_index, edge_in=edge_in, in_w=in_weight,
-                    edge_out=edge_out, out_w=out_weight, query_edges=query_edges)
+        out = model(X, edge_index, edge_in=edge_in, in_w=in_weight, edge_out=edge_out, out_w=out_weight, query_edges=query_edges)
         out = F.softmax(out, dim=1)
         loss = criterion(out, y)
         optimizer.zero_grad()
@@ -235,12 +233,10 @@ colNumber = []
         new_edge_weight = y_score
         return loss.detach().item(), train_acc, train_auc, new_edge_weight
                   
-    def test(X, y, edge_index, edge_in, in_weight,
-             edge_out, out_weight, query_edges):
+    def test(X, y, edge_index, edge_in, in_weight,edge_out, out_weight, query_edges):
         model.eval()
         with torch.no_grad():
-            out = model(X, edge_index, edge_in=edge_in, in_w=in_weight,
-                        edge_out=edge_out, out_w=out_weight, query_edges=query_edges)
+            out = model(X, edge_index, edge_in=edge_in, in_w=in_weight, edge_out=edge_out, out_w=out_weight, query_edges=query_edges)
         out = F.softmax(out, dim=1)
         test_acc = metrics.accuracy_score(y.cpu(), out.max(dim=1)[1].cpu())
         fpr, tpr, thresholds = metrics.roc_curve(y.cpu(), out.max(dim=1)[0].cpu().detach().numpy())
