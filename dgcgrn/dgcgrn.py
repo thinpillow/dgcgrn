@@ -210,8 +210,7 @@ colNumber = []
     data = DirectedData(
         edge_index=data.edge_index, edge_weight=edge_weight, init_data=data).to(device)
 
-    model = DGCN_link_prediction(
-        num_features=X_list.shape[1], hidden=16, label_dim=2, dropout=0.6).to(device)
+    model = DGCN_link_prediction(num_features=X_list.shape[1], hidden=16, label_dim=2, dropout=0.6).to(device)
     criterion = nn.CrossEntropyLoss()
 
 
