@@ -50,7 +50,7 @@ def encode_matrix(seq_matrix):
     for j in range(len(seq_matrix)):
         data = seq_matrix[j]
         ind_to_char = k_mer
-        char_to_int = dict((c, i) for i, c in enumerate(ind_to_char))  # 枚举
+        char_to_int = dict((c, i) for i, c in enumerate(ind_to_char))
         integer_encoded = [char_to_int[char] for char in data]
         onthot_encoded = list()
         for value in integer_encoded:
@@ -70,9 +70,9 @@ def smooth_curve(points, factor=0.8):
             smoothed_points.append(point)
     return smoothed_points
 
-cvae_model = cvae_models.VAE(encoder_layer_sizes=[66, 100],
-                             latent_size=8,
-                             decoder_layer_sizes=[100, 60])
+cvae_model = cvae_models.VAE(encoder_layer_sizes=[,],
+                             latent_size=,
+                             decoder_layer_sizes=[,])
 
 def get_augmented_features(concat):
     X_list = []
@@ -98,7 +98,7 @@ pathts = ''
 cold_ts = pd.read_csv(pathts)
 gene = cold_ts.columns
 gene = np.array(gene)
-ID = [i for i in range(1, 1484 + 1)]
+ID = [i for i in range(1,)]
 genesID = list(zip(gene, ID))
 
 integrated_gold_network = pd.read_csv(pathY)
@@ -117,14 +117,14 @@ colNumber = []
             if genes2 == genesID[k][0]:
                 colnum = genesID[k][1]
                 colNumber.append(colnum)
-    geneNetwork = np.zeros((1484, 1484))
+    geneNetwork = np.zeros((,))
     for i in range(len(rowNumber)):
         r = rowNumber[i] - 1
         c = colNumber[i] - 1
         geneNetwork[r][c] = 1
     adj_data = []
-    for i in range(1484):
-        for j in range(1484):
+    for i in range():
+        for j in range():
             if geneNetwork[i][j] == 1:
                 adj_data.append(int(geneNetwork[i][j]))
     adj_data = np.array(adj_data)
@@ -210,7 +210,7 @@ colNumber = []
     data = DirectedData(
         edge_index=data.edge_index, edge_weight=edge_weight, init_data=data).to(device)
 
-    model = DGCN_link_prediction(num_features=X_list.shape[1], hidden=16, label_dim=2, dropout=0.6).to(device)
+    model = DGCN_link_prediction(num_features=X_list.shape[1], hidden=, label_dim=, dropout=).to(device)
     criterion = nn.CrossEntropyLoss()
 
 
