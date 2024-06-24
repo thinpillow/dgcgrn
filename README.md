@@ -7,5 +7,4 @@
   - scikit-learn == 1.1.2
   - numpy == 1.22.0
   - pandas == 1.4.3
-  - 
   
